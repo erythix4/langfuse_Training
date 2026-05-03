@@ -1,6 +1,6 @@
-# Langfuse in Production — Observability Guide
+# Langfuse in Production - Observability Guide
 
-**By Samuel Desseaux — [Aureonis](https://aureonis.io)**
+**By Samuel Desseaux**
 
 A complete, practitioner-written guide to deploying and operating LLM observability with Langfuse in production environments. Two learning paths, 13 modules, all code validated against production stacks.
 
@@ -8,7 +8,7 @@ A complete, practitioner-written guide to deploying and operating LLM observabil
 
 ## Why this guide
 
-Your existing observability stack — Prometheus, Grafana, Jaeger — answers the wrong questions for LLM workloads. These tools measure whether your service is healthy. They cannot tell you whether your responses are good.
+Your existing observability stack ( Prometheus, Grafana, Jaeger ) answers the wrong questions for LLM workloads. These tools measure whether your service is healthy. They cannot tell you whether your responses are good.
 
 Langfuse closes that gap. This guide shows you how to integrate it into real infrastructure: existing OTEL pipelines, VictoriaMetrics, Kubernetes, enterprise APM, regulated environments under DORA and the AI Act.
 
@@ -121,11 +121,8 @@ For engineers who design observability stacks and operate Kubernetes in producti
 
 ## About
 
-**Samuel Desseaux** is the founder of [Aureonis](https://aureonis.io), a consulting and training firm specializing in observability stack design, platform engineering, SRE, and LLM security. He is an official VictoriaMetrics Training Partner for France, Benelux, and Germany.
+**Samuel Desseaux** is the founder of [Erythix](https://www.erythix.tech), a consulting and training firm specializing in observability stack design, platform engineering, SRE and LLM security. He is an official VictoriaMetrics Training Partner for France, Benelux, and Germany.
 
-Speaker at FOSDEM 2024 and 2026, KubeCon Europe, OSMC, Grafana Meetup Paris, and Devoxx.
-
-Certifications: Prometheus Certified Associate, Zabbix Certified Specialist, CEH, CHFI, CCSP.
 
 Training programs referenced in this guide:
 
@@ -137,7 +134,7 @@ Training programs referenced in this guide:
 | SEC-302 | LLM agent security | Aureonis |
 | SEC-303 | AI system audit and compliance | Aureonis |
 
-Contact: [aureonis.io](https://aureonis.io)
+
 
 ---
 
