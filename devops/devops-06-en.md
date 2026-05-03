@@ -1,6 +1,6 @@
 # Langfuse in a MLOps Stack: Where It Fits, What It Does Not Cover
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -154,7 +154,7 @@ def export_low_quality_traces(
     ], check=True)
 ```
 
-This flow — extract hard cases from Langfuse, version them with DVC, integrate them into the fine-tuning pipeline — is one of the most effective patterns for continuously improving an LLM in production. The production data becomes the training signal.
+This flow - extract hard cases from Langfuse, version them with DVC, integrate them into the fine-tuning pipeline - is one of the most effective patterns for continuously improving an LLM in production. The production data becomes the training signal.
 
 ---
 
@@ -271,4 +271,4 @@ Langfuse's value in this table is precisely bounded: it is the layer that connec
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*

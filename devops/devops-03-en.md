@@ -1,6 +1,6 @@
 # End-to-End RAG Pipeline Tracing with Langfuse
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -182,7 +182,7 @@ def rag_pipeline(question: str, user_id: str, session_id: str) -> str:
         # Automatic scoring
         trace.score(name="has-answer", value=0.0 if is_refusal else 1.0)
 
-        # Check retrieval quality — penalize empty or low-relevance results
+        # Check retrieval quality - penalize empty or low-relevance results
         avg_distance = sum(distances) / len(distances) if distances else 1.0
         trace.score(name="retrieval-quality", value=max(0.0, 1.0 - avg_distance))
 
@@ -226,10 +226,10 @@ The canonical scenario: a user complains the chatbot answered off-topic. With th
 Look at the `vector-search` span. If distances are high (>0.6 on cosine), retrieval found no relevant documents. Root cause: insufficient indexing, or the question phrasing is too far from the indexed content.
 
 **2. Was the assembled prompt correct?**
-Look at the `assemble-prompt` span. Is the injected context relevant? Is it too long (risk of context window saturation — the model starts ignoring early content)?
+Look at the `assemble-prompt` span. Is the injected context relevant? Is it too long (risk of context window saturation - the model starts ignoring early content)?
 
 **3. Did the model follow the context?**
-Compare the `llm-answer` output with the context provided. If the response contains information absent from the context, the model hallucinated — despite the RAG context.
+Compare the `llm-answer` output with the context provided. If the response contains information absent from the context, the model hallucinated - despite the RAG context.
 
 **4. Is the quality score drifting over time?**
 In Langfuse, filter traces by `score:has-answer = 0.0`. If the refusal rate is increasing, your document base no longer covers your users' questions.
@@ -264,8 +264,8 @@ You can then filter in Langfuse by `metadata.pipeline_version` and compare avera
 
 **PII in prompts.** If your users send personal data in their questions, it ends up in stored inputs. Implement a redaction step before instrumentation, or configure Langfuse to mask sensitive fields. See module SRE-04 for the full redaction architecture.
 
-**Sampling in production.** For high-volume applications, 10–20% sampling is reasonable for complete traces. Keep 100% sampling for traces that trigger a low quality score — these are the cases you most need to debug.
+**Sampling in production.** For high-volume applications, 10-20% sampling is reasonable for complete traces. Keep 100% sampling for traces that trigger a low quality score - these are the cases you most need to debug.
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*

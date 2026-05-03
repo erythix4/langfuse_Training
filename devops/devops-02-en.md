@@ -1,12 +1,12 @@
 # Getting Started with Langfuse: Your First LLM Trace in 30 Minutes
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
 ## Objective
 
-By the end of this module, you have Langfuse running locally, a Python application instrumented, and an LLM trace readable in the interface. No additional theory — we install, instrument, and read.
+By the end of this module, you have Langfuse running locally, a Python application instrumented, and an LLM trace readable in the interface. No additional theory - we install, instrument, and read.
 
 ---
 
@@ -19,7 +19,7 @@ By the end of this module, you have Langfuse running locally, a Python applicati
 
 ---
 
-## Step 1 — Deploy Langfuse Locally
+## Step 1 - Deploy Langfuse Locally
 
 Langfuse self-hosted runs three components: the Next.js application, a PostgreSQL database, and a worker container for asynchronous trace processing.
 
@@ -49,19 +49,19 @@ The interface is available at `http://localhost:3000` after approximately 30 sec
 
 ---
 
-## Step 2 — Create a Project and Retrieve API Keys
+## Step 2 - Create a Project and Retrieve API Keys
 
 In the Langfuse interface:
 
-1. **Create a project** — "my-first-llm-app" or any name
+1. **Create a project** - "my-first-llm-app" or any name
 2. **Go to Settings > API Keys**
 3. Copy the `Public Key` and `Secret Key`
 
-These two keys identify your project. They are distinct from your OpenAI API key — they authenticate against Langfuse only.
+These two keys identify your project. They are distinct from your OpenAI API key - they authenticate against Langfuse only.
 
 ---
 
-## Step 3 — Instrument a Python Application
+## Step 3 - Instrument a Python Application
 
 Install the SDK:
 
@@ -101,7 +101,7 @@ Run the script. Return to the Langfuse interface. You should see your first trac
 
 ---
 
-## Step 4 — Reading a Trace
+## Step 4 - Reading a Trace
 
 Click on the trace. You see the hierarchy:
 
@@ -116,13 +116,13 @@ Trace: chatcmpl-abc123
         Duration: 612ms
 ```
 
-This is exactly what your Prometheus/Jaeger stack was not showing you: the prompt content, the raw response, token counts, and cost — in a single view.
+This is exactly what your Prometheus/Jaeger stack was not showing you: the prompt content, the raw response, token counts, and cost - in a single view.
 
 ---
 
-## Step 5 — Manual Trace Structuring
+## Step 5 - Manual Trace Structuring
 
-The automatic wrapper is convenient, but you will quickly want to structure traces manually — especially if you have multiple steps (document retrieval, validation, post-processing).
+The automatic wrapper is convenient, but you will quickly want to structure traces manually - especially if you have multiple steps (document retrieval, validation, post-processing).
 
 ```python
 from langfuse import Langfuse
@@ -181,7 +181,7 @@ Return to the interface. The trace now displays two nested spans: `retrieve-cont
 
 ---
 
-## Step 6 — Exploring the Interface
+## Step 6 - Exploring the Interface
 
 Take five minutes to navigate the Langfuse UI:
 
@@ -204,7 +204,7 @@ In 30 minutes, you have:
 - A Python application that automatically traces LLM calls
 - A structured trace with nested spans, tokens, cost, and a score
 
-These are the foundations. The next step is instrumenting a more realistic pipeline — with retrieval, reranking, and generation — to see how Langfuse handles operation hierarchies and enables quality drift diagnosis.
+These are the foundations. The next step is instrumenting a more realistic pipeline - with retrieval, reranking, and generation - to see how Langfuse handles operation hierarchies and enables quality drift diagnosis.
 
 ---
 
@@ -220,4 +220,4 @@ These are the foundations. The next step is instrumenting a more realistic pipel
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*

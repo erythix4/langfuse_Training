@@ -1,6 +1,6 @@
 # LLM Evaluation in Production: Building a Continuous Quality Feedback Loop
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -8,13 +8,13 @@
 
 An LLM that responds in 400ms with HTTP 200 may be actively degrading your user experience. An inaccurate, off-topic, or hallucinated response is an application incident that your traditional SLOs will never catch.
 
-LLM evaluation in production is the discipline that answers: "are our responses actually good?" — not "is our service available?". This module covers the three evaluation approaches available in Langfuse, how to combine them into a continuous feedback loop, and how to expose quality metrics to your existing monitoring stack.
+LLM evaluation in production is the discipline that answers: "are our responses actually good?" - not "is our service available?". This module covers the three evaluation approaches available in Langfuse, how to combine them into a continuous feedback loop, and how to expose quality metrics to your existing monitoring stack.
 
 ---
 
 ## The Three Levels of Evaluation
 
-### Level 1 — Human Annotation
+### Level 1 - Human Annotation
 
 The gold standard. A human reads the response and evaluates it according to defined criteria. Most reliable, most time-intensive.
 
@@ -29,7 +29,7 @@ langfuse.create_score_config(name="tone-appropriate", data_type="BOOLEAN")
 
 Use human annotation for: calibrating your automated scorers, building a reference dataset, validating major prompt or model changes, and resolving ambiguous cases flagged by automated scoring.
 
-### Level 2 — Rule-Based Automatic Scoring
+### Level 2 - Rule-Based Automatic Scoring
 
 Deterministic rules you can trigger on every generation. Fast, no additional cost, but limited to what is measurable without an LLM.
 
@@ -70,9 +70,9 @@ def score_automatically(trace, answer: str, question: str, expected_language: st
     return scores
 ```
 
-### Level 3 — LLM-as-Judge
+### Level 3 - LLM-as-Judge
 
-You use an LLM (typically more capable than the one in production) to evaluate the responses from your pipeline. This approach enables evaluating subjective dimensions — relevance, consistency, faithfulness to context — without human annotation overhead.
+You use an LLM (typically more capable than the one in production) to evaluate the responses from your pipeline. This approach enables evaluating subjective dimensions - relevance, consistency, faithfulness to context - without human annotation overhead.
 
 ```python
 from langfuse.openai import openai
@@ -90,14 +90,14 @@ Generated response: {answer}
 Evaluate the response on these three criteria. Respond only with valid JSON.
 
 {{
-  "relevance": <0.0 to 1.0 — does the response answer the question?>,
-  "faithfulness": <0.0 to 1.0 — is the response faithful to the context?>,
-  "completeness": <0.0 to 1.0 — is the response complete?>,
+  "relevance": <0.0 to 1.0 - does the response answer the question?>,
+  "faithfulness": <0.0 to 1.0 - is the response faithful to the context?>,
+  "completeness": <0.0 to 1.0 - is the response complete?>,
   "rationale": "<one or two sentences explaining your scores>"
 }}"""
 
     response = openai.chat.completions.create(
-        model="gpt-4o",  # Judge model — more capable than the evaluated model
+        model="gpt-4o",  # Judge model - more capable than the evaluated model
         messages=[{"role": "user", "content": judge_prompt}],
         temperature=0.0,
         response_format={"type": "json_object"}
@@ -116,7 +116,7 @@ Evaluate the response on these three criteria. Respond only with valid JSON.
     return scores
 ```
 
-**Important caveats on LLM-as-judge.** The judge has its own biases — preference for longer responses, for certain writing styles, for confident-sounding text. Calibrate it on a human-annotated dataset before deploying it in production. A miscalibrated judge creates false confidence.
+**Important caveats on LLM-as-judge.** The judge has its own biases - preference for longer responses, for certain writing styles, for confident-sounding text. Calibrate it on a human-annotated dataset before deploying it in production. A miscalibrated judge creates false confidence.
 
 ---
 
@@ -236,8 +236,8 @@ Recommended metrics for a quality dashboard:
 - **Average score by dimension** over 24h / 7d rolling window
 - **Refusal rate** (score `no-refusal = 0`)
 - **Score distribution by model** (compare gpt-4o-mini vs gpt-4o)
-- **Score vs latency correlation** — are fast responses also the lowest quality?
-- **Score change after a deployment** — did the prompt update improve or regress quality?
+- **Score vs latency correlation** - are fast responses also the lowest quality?
+- **Score change after a deployment** - did the prompt update improve or regress quality?
 
 ---
 
@@ -253,4 +253,4 @@ Recommended metrics for a quality dashboard:
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*

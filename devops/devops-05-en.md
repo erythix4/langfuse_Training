@@ -1,12 +1,12 @@
 # Langfuse vs Arize Phoenix vs Helicone: An Honest Comparison
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
 ## Why This Comparison Matters Now
 
-The LLM observability market has densified rapidly since 2023. Langfuse, Arize Phoenix, Helicone, Traceloop, Weave (W&B), LangSmith — each positions differently. Choosing the wrong tool is expensive: migration, re-instrumentation, loss of historical data.
+The LLM observability market has densified rapidly since 2023. Langfuse, Arize Phoenix, Helicone, Traceloop, Weave (W&B), LangSmith - each positions differently. Choosing the wrong tool is expensive: migration, re-instrumentation, loss of historical data.
 
 This comparison focuses on the three most widely deployed tools outside hyperscaler ecosystems, evaluated against objective and tested criteria: deployment model, technical integration, evaluation capabilities, cost, and data governance.
 
@@ -14,11 +14,11 @@ This comparison focuses on the three most widely deployed tools outside hypersca
 
 ## The Three Candidates in One Sentence
 
-**Langfuse** — open-source LLM observability, self-hostable, trace- and evaluation-focused, with native OTLP support since v2.
+**Langfuse** - open-source LLM observability, self-hostable, trace- and evaluation-focused, with native OTLP support since v2.
 
-**Arize Phoenix** — open-source LLM analysis and evaluation tool, data-science-oriented with strong drift detection, best for offline analysis.
+**Arize Phoenix** - open-source LLM analysis and evaluation tool, data-science-oriented with strong drift detection, best for offline analysis.
 
-**Helicone** — SaaS LLM proxy with automatic logging, cost and usage-oriented, one-line deployment.
+**Helicone** - SaaS LLM proxy with automatic logging, cost and usage-oriented, one-line deployment.
 
 ---
 
@@ -36,7 +36,7 @@ This comparison focuses on the three most widely deployed tools outside hypersca
 
 **Arize Phoenix** deploys with `pip install arize-phoenix` followed by `px.launch_app()`. This is an asset in experimentation, but it is not designed for high-availability production deployments with persistent storage.
 
-**Helicone** offers no self-hosting. If your primary constraint is data sovereignty — financial sector, healthcare, defense, public sector — Helicone is ruled out immediately.
+**Helicone** offers no self-hosting. If your primary constraint is data sovereignty - financial sector, healthcare, defense, public sector - Helicone is ruled out immediately.
 
 ---
 
@@ -53,7 +53,7 @@ This comparison focuses on the three most widely deployed tools outside hypersca
 | LlamaIndex integration | Yes | Yes | Partial |
 | Instrumentation-free option | Via OTEL auto-instrumentation | Via OTEL auto-instrumentation | Via proxy headers |
 
-Helicone's proxy mode is its key differentiator: redirect your OpenAI calls to `https://oai.helicone.ai/v1` and add two headers. No code changes. Appealing for a PoC, but it places Helicone on the critical path of every LLM call — a single point of failure.
+Helicone's proxy mode is its key differentiator: redirect your OpenAI calls to `https://oai.helicone.ai/v1` and add two headers. No code changes. Appealing for a PoC, but it places Helicone on the critical path of every LLM call - a single point of failure.
 
 Both Langfuse and Phoenix support the GenAI Semantic Conventions, which means OTEL auto-instrumented libraries work without proprietary SDK changes.
 
@@ -72,7 +72,7 @@ Both Langfuse and Phoenix support the GenAI Semantic Conventions, which means OT
 | Pre-built evaluators | Basic | Extensive | No |
 | Real-time scoring | Yes | Partial | No |
 
-Arize Phoenix's evaluation library is its main strength. It provides pre-built evaluators (hallucination, relevance, toxicity, security) that work on entire datasets, not only on individual traces. It is the preferred tool for deep offline analysis work — especially for data science teams running experiments in notebooks.
+Arize Phoenix's evaluation library is its main strength. It provides pre-built evaluators (hallucination, relevance, toxicity, security) that work on entire datasets, not only on individual traces. It is the preferred tool for deep offline analysis work - especially for data science teams running experiments in notebooks.
 
 Langfuse is stronger on continuous production evaluation: annotation queues, real-time scoring, Grafana integration via its API. The workflow for turning production traces into a regression dataset is more mature.
 
@@ -121,9 +121,9 @@ At scale on cloud plans, Helicone costs can grow non-linearly with request volum
 
 It is worth being honest about shared limitations:
 
-None of them replaces an enterprise APM (Dynatrace, Datadog) for general application observability — infrastructure correlation, distributed tracing across non-LLM services, APM dashboards.
+None of them replaces an enterprise APM (Dynatrace, Datadog) for general application observability - infrastructure correlation, distributed tracing across non-LLM services, APM dashboards.
 
-None of them handles monitoring of classical ML model quality — feature drift, PSI/KL divergence, classification performance degradation. For those needs, Evidently AI or Fiddler are better suited.
+None of them handles monitoring of classical ML model quality - feature drift, PSI/KL divergence, classification performance degradation. For those needs, Evidently AI or Fiddler are better suited.
 
 None of them provides native SIEM integration for correlating LLM activity with security events. This requires a custom export layer (see module SRE-04 for the Langfuse approach).
 
@@ -131,4 +131,4 @@ For workloads with requirements in these domains, a hybrid architecture is neces
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*

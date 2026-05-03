@@ -1,6 +1,6 @@
 # Why Prometheus and Jaeger Are Not Enough to Observe LLMs in Production
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -8,7 +8,7 @@
 
 Prometheus scrapes your metrics every 15 seconds. Jaeger captures your distributed spans. Grafana displays dashboards your team consults at every incident. You have SLOs, alerts, and runbooks.
 
-Then you deploy your first LLM service in production — a chatbot, a documentation Q&A system, an automated summarization pipeline. Users start complaining: the answers are off-topic, sometimes incoherent, sometimes invented.
+Then you deploy your first LLM service in production - a chatbot, a documentation Q&A system, an automated summarization pipeline. Users start complaining: the answers are off-topic, sometimes incoherent, sometimes invented.
 
 You open Grafana. P99 latency is stable. The HTTP error rate is at zero. Prometheus flags nothing. Jaeger shows a `POST /v1/chat/completions` span completing in 800ms with a 200 status.
 
@@ -16,11 +16,11 @@ The problem is there, but your tools cannot see it. Why?
 
 ---
 
-## What your tools measure — and what they ignore
+## What your tools measure - and what they ignore
 
 OpenTelemetry, Prometheus, and Jaeger were designed to observe deterministic systems. A request enters a service, processing follows predictable logic, a response exits. The metrics that matter are latency, error rate, and resource saturation.
 
-An LLM is not deterministic. For the same input, it can produce radically different outputs depending on temperature, conversation context, and system instructions. A "correct" response in the HTTP sense (status 200, normal latency) can be completely wrong in the application sense — fabricated information, off-topic answer, inappropriate tone.
+An LLM is not deterministic. For the same input, it can produce radically different outputs depending on temperature, conversation context, and system instructions. A "correct" response in the HTTP sense (status 200, normal latency) can be completely wrong in the application sense - fabricated information, off-topic answer, inappropriate tone.
 
 Your current tools measure the **health of the pipe**. They do not measure the **quality of what flows through it**.
 
@@ -63,7 +63,7 @@ Here is what you actually need to diagnose a quality regression:
 - Which model responded, and which exact version?
 - How many tokens were consumed on input and output?
 - Was the response coherent with the question?
-- Was this a step in a longer pipeline — which one?
+- Was this a step in a longer pipeline - which one?
 - Did the user express dissatisfaction after this response?
 
 None of this information exists in a standard HTTP span. And that is by design: OpenTelemetry was not built to understand the content of LLM calls.
@@ -80,7 +80,7 @@ With an LLM observability tool, you would have: output history, an automatic lan
 
 ### 2. Retrieval silently returning nothing useful
 
-Your RAG pipeline runs in three steps: retrieve relevant documents, assemble context, generate. Retrieval sometimes returns zero relevant results — the LLM then generates a confident, fluent, and completely fabricated answer.
+Your RAG pipeline runs in three steps: retrieve relevant documents, assemble context, generate. Retrieval sometimes returns zero relevant results - the LLM then generates a confident, fluent, and completely fabricated answer.
 
 Your current stack sees a 200ms generation span. It does not see that the context provided to the model was empty. Result: users trusting hallucinated information.
 
@@ -98,7 +98,7 @@ Tools like Langfuse were designed specifically to close this gap. They operate a
 
 Concretely, they capture and expose:
 
-**The structure of LLM execution.** An LLM pipeline is not an atomic call — it is a hierarchy of operations: retrieval > reranking > generation > post-processing. Langfuse represents this hierarchy as Trace > nested Spans, with the detail of each step.
+**The structure of LLM execution.** An LLM pipeline is not an atomic call - it is a hierarchy of operations: retrieval > reranking > generation > post-processing. Langfuse represents this hierarchy as Trace > nested Spans, with the detail of each step.
 
 **The content of exchanges.** Inputs (prompts, messages, retrieved documents) and outputs (generated responses) are stored and queryable. This is what enables real debugging: you see exactly what was sent to the model and what it returned.
 
@@ -110,7 +110,7 @@ Concretely, they capture and expose:
 
 ---
 
-## This is not a replacement — it is a complementary layer
+## This is not a replacement - it is a complementary layer
 
 It would be wrong to conclude that your current tools are useless for LLM workloads. They remain indispensable for what they do well:
 
@@ -151,9 +151,9 @@ Once you accept the need for a dedicated tool, the discipline has three core pil
                       Langfuse
 ```
 
-**Tracing.** Capturing the complete execution of every LLM interaction — inputs, outputs, intermediate steps, duration, token consumption — in a queryable store. This is what enables debugging.
+**Tracing.** Capturing the complete execution of every LLM interaction - inputs, outputs, intermediate steps, duration, token consumption - in a queryable store. This is what enables debugging.
 
-**Evaluation.** Assigning quality scores to generations — automatically (rule-based, LLM-as-judge) or manually (human annotation). This is what enables systematic quality monitoring.
+**Evaluation.** Assigning quality scores to generations - automatically (rule-based, LLM-as-judge) or manually (human annotation). This is what enables systematic quality monitoring.
 
 **Datasets.** Extracting production traces into labeled datasets for regression testing, offline evaluation, and fine-tuning data. This is what closes the feedback loop between production and model improvement.
 
@@ -165,8 +165,8 @@ Langfuse covers all three. This guide covers each in depth.
 
 Module DevOps-02 covers the installation of Langfuse in self-hosted mode and the instrumentation of your first LLM call. In under 30 minutes, you will have a readable, navigable LLM trace.
 
-What you will discover: the difference between seeing an HTTP span at 800ms and seeing 512 prompt tokens, 128 output tokens, the exact model version, and the raw response — all in a single view.
+What you will discover: the difference between seeing an HTTP span at 800ms and seeing 512 prompt tokens, 128 output tokens, the exact model version, and the raw response - all in a single view.
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
