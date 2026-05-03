@@ -374,4 +374,3 @@ The combination of per-step span logging, score-based anomaly detection, and Vic
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist, agentic AI practitioner, and LLM security engineer. Speaker at FOSDEM 2026 and KubeCon Europe.*
