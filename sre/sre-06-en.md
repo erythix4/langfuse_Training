@@ -175,4 +175,3 @@ Arguments that work:
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist (OpenTelemetry, VictoriaMetrics, Dynatrace, Elastic) and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
