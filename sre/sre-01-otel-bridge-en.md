@@ -1,6 +1,6 @@
 # Langfuse + OpenTelemetry: Bridging LLM Observability with Your Existing Stack
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux -Erythix*
 
 ---
 
@@ -22,7 +22,7 @@ The answer is: coexist — and this is by design.
 
 Before talking integration, clarify the perimeters.
 
-**OpenTelemetry** is a general-purpose instrumentation protocol and SDK. It captures distributed spans, system metrics, and structured logs. It has no concept of a "prompt", a "token count", or a "hallucination score". To OTEL, an LLM call is an HTTP call with a latency and a status code.
+**OpenTelemetry** is a general-purpose instrumentation protocol and SDK. It captures distributed spans, system metrics and structured logs. It has no concept of a "prompt", a "token count", or a "hallucination score". To OTEL, an LLM call is an HTTP call with a latency and a status code.
 
 **Langfuse** is a *semantic* observability system for LLM workloads. It understands the structure of an LLM trace: Trace > Generation > Span. It exposes tokens consumed, associated costs, human and automated evaluation scores, user sessions, and input/output content for debugging and offline evaluation.
 
@@ -32,7 +32,7 @@ Both are necessary. OTEL tells you your service is slow. Langfuse tells you *why
 
 ## How the Integration Works
 
-Langfuse exposes a native OTLP endpoint since version 2.x. The integration does not require replacing your existing pipeline — it extends it.
+Langfuse exposes a native OTLP endpoint since version 2.x. The integration does not require replacing your existing pipeline : it extends it.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -99,13 +99,13 @@ from opentelemetry import trace
 trace.set_tracer_provider(provider)
 ```
 
-**When to use this:** small teams, simple architectures, development environments, or when you cannot modify the Collector configuration.
+**When to use this:** small teams, simple architectures, development environments or when you cannot modify the Collector configuration.
 
 **Drawbacks:** changing the routing requires a code change and redeployment. Both exporters are tightly coupled to the application.
 
 ---
 
-## Option 2 — Routing via OpenTelemetry Collector
+## Option 2 : Routing via OpenTelemetry Collector
 
 The production-recommended approach. The Collector receives all spans and routes them based on filtering rules. Applications export to a single destination (the Collector); routing is infrastructure configuration, not application code.
 
@@ -171,7 +171,7 @@ This architecture is preferred for several reasons:
 
 ---
 
-## Option 3 — Using Langfuse as the Primary OTEL Endpoint
+## Option 3 : Using Langfuse as the Primary OTEL Endpoint
 
 For teams starting fresh without an existing OTEL backend, Langfuse can serve as the primary trace sink. You can always add a secondary export to Jaeger or Tempo later.
 
@@ -387,4 +387,4 @@ The OTEL/Langfuse integration is the plumbing. Once it is in place, the question
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist (OpenTelemetry, VictoriaMetrics, Grafana) and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe. Official VictoriaMetrics Training Partner for France, Benelux, and Germany.*
+
