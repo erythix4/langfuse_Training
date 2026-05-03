@@ -268,4 +268,4 @@ You can then filter in Langfuse by `metadata.pipeline_version` and compare avera
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+
