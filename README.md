@@ -128,11 +128,11 @@ Training programs referenced in this guide:
 
 | Code | Topic | Provider |
 |------|-------|----------|
-| AI-701 | AI Observability in production | Aureonis / Technofutur TIC |
-| VM-101/201 | VictoriaMetrics (foundation + advanced) | Aureonis / VictoriaMetrics |
-| SEC-301 | Securing LLMs in production | Aureonis / Technofutur TIC |
-| SEC-302 | LLM agent security | Aureonis |
-| SEC-303 | AI system audit and compliance | Aureonis |
+| AI-701 | AI Observability in production | 
+| VM-101/201 | VictoriaMetrics (foundation + advanced) | 
+| SEC-301 | Securing LLMs in production |
+| SEC-302 | LLM agent security | 
+| SEC-303 | AI system audit and compliance | 
 
 
 
