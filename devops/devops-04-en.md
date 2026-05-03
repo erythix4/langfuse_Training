@@ -253,4 +253,4 @@ Recommended metrics for a quality dashboard:
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+
