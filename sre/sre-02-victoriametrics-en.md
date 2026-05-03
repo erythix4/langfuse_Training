@@ -1,6 +1,6 @@
 # Langfuse + VictoriaMetrics: LLM Metrics in Your Native Prometheus Stack
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux -Erythix*
 
 ---
 
@@ -20,7 +20,7 @@ Langfuse does not push metrics to Prometheus natively. It exposes two exploitabl
 
 **A REST API** with aggregation endpoints: metrics by project, by model, by user, windowed in time. Average latency, tokens consumed, estimated cost, generation count, evaluation scores. Full API reference at `https://api.reference.langfuse.com`.
 
-**An OTLP endpoint** for receiving traces. LLM spans arrive in Langfuse via OTEL — but the reverse export (Langfuse to your metrics stack) is not native.
+**An OTLP endpoint** for receiving traces. LLM spans arrive in Langfuse via OTEL - but the reverse export (Langfuse to your metrics stack) is not native.
 
 The solution is a **custom exporter**: a lightweight process that polls the Langfuse API at a regular interval and exposes metrics in Prometheus format. VictoriaMetrics scrapes it like any other target.
 
@@ -544,8 +544,8 @@ Be explicit about the limits.
 | Offline quality evaluation | Langfuse datasets + scoring |
 | Correlation with infrastructure spans | Jaeger / Tempo via OTEL |
 
-The two stacks are complementary. Routing LLM metrics into VictoriaMetrics does not replace Langfuse — it integrates it into your existing operational culture. Your on-call engineer finds the anomaly in Grafana, opens Langfuse for the content details, closes the ticket. That is what mature LLM observability looks like.
+The two stacks are complementary. Routing LLM metrics into VictoriaMetrics does not replace Langfuse - it integrates it into your existing operational culture. Your on-call engineer finds the anomaly in Grafana, opens Langfuse for the content details, closes the ticket. That is what mature LLM observability looks like.
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis and an official VictoriaMetrics Training Partner (France, Benelux, Germany). Speaker at FOSDEM 2026 and KubeCon Europe.*
+
