@@ -326,4 +326,3 @@ But it constitutes the raw data foundation that these frameworks rely on. Withou
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist, LLM system compliance practitioner, and production security specialist. Speaker at FOSDEM 2026 and KubeCon Europe.*
