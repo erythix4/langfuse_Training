@@ -419,4 +419,3 @@ Before switching traffic to your self-hosted instance:
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, a Kubernetes and observability stack specialist. Official VictoriaMetrics Training Partner for France, Benelux, and Germany. Speaker at FOSDEM 2026 and KubeCon Europe.*
