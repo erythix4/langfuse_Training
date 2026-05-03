@@ -1,6 +1,6 @@
 # LLM Audit Trail with Langfuse: Meeting DORA and AI Act Requirements
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux -Erythix*
 
 ---
 
@@ -319,11 +319,10 @@ Langfuse is one piece of the compliance architecture, not the entirety. It does 
 
 - A GDPR Article 30 data processing register
 - A Data Protection Impact Assessment (DPIA, Article 35)
-- AI Act Article 11 technical documentation — the technical documentation required for high-risk systems extends far beyond the scope of an observability tool
+- AI Act Article 11 technical documentation - the technical documentation required for high-risk systems extends far beyond the scope of an observability tool
 - A DORA incident response plan (business continuity plans, resilience testing)
 
 But it constitutes the raw data foundation that these frameworks rely on. Without reliable and auditable traces, these frameworks remain theoretical.
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist, LLM system compliance practitioner, and production security specialist. Speaker at FOSDEM 2026 and KubeCon Europe.*
