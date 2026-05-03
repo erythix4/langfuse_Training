@@ -131,4 +131,4 @@ For workloads with requirements in these domains, a hybrid architecture is neces
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+
