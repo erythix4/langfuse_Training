@@ -169,4 +169,4 @@ What you will discover: the difference between seeing an HTTP span at 800ms and 
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+
