@@ -1,6 +1,6 @@
 # Detecting Prompt Injections with Langfuse
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux -Erythix*
 
 ---
 
@@ -8,9 +8,9 @@
 
 Prompt injection is the most prevalent attack against production LLM systems. It consists of embedding instructions in the user input that attempt to subvert the model's behavior: bypass system instructions, exfiltrate context data, or produce prohibited content.
 
-Most teams address this problem at design time only — guardrails in the system prompt, input filters. This is insufficient. Attacks evolve, bypasses get refined, and without production monitoring you have zero visibility into what is attempting to pass through.
+Most teams address this problem at design time only - guardrails in the system prompt, input filters. This is insufficient. Attacks evolve, bypasses get refined, and without production monitoring you have zero visibility into what is attempting to pass through.
 
-This module covers how to instrument a prompt injection detection layer, create Langfuse scores for detected attempts, and configure VictoriaMetrics alerts correlated with application spans.
+This module covers how to instrument a prompt injection detection layer, create Langfuse scores for detected attempts and configure VictoriaMetrics alerts correlated with application spans.
 
 ---
 
@@ -406,7 +406,7 @@ groups:
 
 **False positives.** Regex-based rules are aggressive. A legitimate user asking about "cooking instructions" or "previous work experience" may trigger a false positive. Calibrate your thresholds on real production data before enabling automatic blocking. Start with `flag` mode, collect data for two weeks, then tune before enabling `block`.
 
-**LLM-as-security-judge.** Using an LLM to detect injections (LLM-as-judge for security) is more accurate than regex but creates a circular dependency and additional cost. Reserve this approach for cases where deterministic rules are insufficient — typically for multi-turn and encoding-based attacks.
+**LLM-as-security-judge.** Using an LLM to detect injections (LLM-as-judge for security) is more accurate than regex but creates a circular dependency and additional cost. Reserve this approach for cases where deterministic rules are insufficient - typically for multi-turn and encoding-based attacks.
 
 **Indirect injection via RAG.** Pre-generation detection does not protect against injections arriving in RAG-retrieved context. Also instrument your retrieval span to analyze retrieved documents before injecting them into the prompt:
 
@@ -431,4 +431,3 @@ for i, doc in enumerate(retrieved_docs):
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an LLM security specialist (SEC-301/302/303 training programs), observability practitioner, and compliance engineer. Speaker at FOSDEM 2026 and KubeCon Europe.*
