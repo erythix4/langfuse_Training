@@ -98,11 +98,9 @@ The security module (SRE-05) covers detection patterns as part of the observabil
 
 ## About the Author
 
-Samuel Desseaux is the founder of Erythix, a consulting and training firm specialized in observability stack design (OpenTelemetry, VictoriaMetrics, Grafana, Prometheus, Elastic, Dynatrace, Zabbix), platform engineering, SRE, and LLM security. He is an official VictoriaMetrics Training Partner for France, Benelux, and Germany. He has spoken at FOSDEM 2024 and 2026, KubeCon Europe, OSMC, Grafana Meetup Paris, and Devoxx. He holds the Prometheus Certified Associate and Zabbix Certified Specialist certifications, and is preparing for the CKA.
+Samuel Desseaux is the founder of Erythix, an independent consulting and training firm specialized in observability stack design (OpenTelemetry, VictoriaMetrics, Grafana, Prometheus, Elastic, Dynatrace, Zabbix), platform engineering, SRE, and LLM security. He is an official VictoriaMetrics Training Partner for France, Benelux, and Germany. 
 
-Erythix delivers training and consulting across France and Benelux, with an anchor mission at Banque centrale du Luxembourg. Training programs referenced in this guide (SEC-301/302/303 for LLM security, VM-101/201 for VictoriaMetrics, AI-701 for AI observability) are available through Erythix and its training partners Technofutur TIC, SUSE, and Digicomp.
-
-Contact: [aureonis.io](https://aureonis.io)
+Erythix delivers training and consulting across France and Benelux. Training programs referenced in this guide (SEC-301/302/303 for LLM security, VM-101/201 for VictoriaMetrics, AI-701 for AI observability) are available through Erythix.
 
 ---
 
