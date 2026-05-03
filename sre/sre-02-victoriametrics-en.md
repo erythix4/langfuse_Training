@@ -548,4 +548,3 @@ The two stacks are complementary. Routing LLM metrics into VictoriaMetrics does 
 
 ---
 
-*Samuel Desseaux is the founder of Erythix and an official VictoriaMetrics Training Partner (France, Benelux, Germany). Speaker at FOSDEM 2026 and KubeCon Europe.*
