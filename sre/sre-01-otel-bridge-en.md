@@ -387,4 +387,4 @@ The OTEL/Langfuse integration is the plumbing. Once it is in place, the question
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist (OpenTelemetry, VictoriaMetrics, Grafana) and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe. Official VictoriaMetrics Training Partner for France, Benelux, and Germany.*
+
