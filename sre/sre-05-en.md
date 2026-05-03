@@ -431,4 +431,3 @@ for i, doc in enumerate(retrieved_docs):
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an LLM security specialist (SEC-301/302/303 training programs), observability practitioner, and compliance engineer. Speaker at FOSDEM 2026 and KubeCon Europe.*
