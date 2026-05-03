@@ -220,4 +220,4 @@ These are the foundations. The next step is instrumenting a more realistic pipel
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+
