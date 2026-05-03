@@ -271,4 +271,3 @@ Langfuse's value in this table is precisely bounded: it is the layer that connec
 
 ---
 
-*Samuel Desseaux is the founder of Erythix, an observability stack specialist and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
