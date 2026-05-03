@@ -1,6 +1,6 @@
 # LLM Audit Trail with Langfuse: Meeting DORA and AI Act Requirements
 
-*By Samuel Desseaux -Erythix*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -38,25 +38,25 @@ This module does not replace legal counsel. It identifies the concrete technical
 
 ## What DORA Requires for LLM Systems
 
-DORA applies to financial entities and their critical ICT service providers. If you operate an LLM in a financial context — credit analysis assistance, report generation, advisor support tooling — you are potentially within its scope.
+DORA applies to financial entities and their critical ICT service providers. If you operate an LLM in a financial context - credit analysis assistance, report generation, advisor support tooling - you are potentially within its scope.
 
-**Article 9 — ICT risk management.** You must maintain documentation on your information system components, including third-party services (OpenAI, Anthropic APIs). Langfuse traces constitute part of this operational documentation.
+**Article 9 - ICT risk management.** You must maintain documentation on your information system components, including third-party services (OpenAI, Anthropic APIs). Langfuse traces constitute part of this operational documentation.
 
-**Article 12 — Logging.** ICT systems must produce activity logs sufficient to detect incidents and support forensic investigation. For an LLM, this includes: who queried the system, with what input, what output was produced, at what timestamp.
+**Article 12 - Logging.** ICT systems must produce activity logs sufficient to detect incidents and support forensic investigation. For an LLM, this includes: who queried the system, with what input, what output was produced, at what timestamp.
 
-**Article 17 — Incident management.** Incidents must be detectable, classifiable, and reportable within defined timeframes. An LLM system producing erroneous responses at scale constitutes an ICT incident under DORA.
+**Article 17 - Incident management.** Incidents must be detectable, classifiable, and reportable within defined timeframes. An LLM system producing erroneous responses at scale constitutes an ICT incident under DORA.
 
 ---
 
 ## What the AI Act Requires
 
-The AI Act classifies LLM systems by risk level. High-risk systems (Article 6) — which include decision-support systems in financial services, education, employment, and essential services — are subject to the strictest requirements.
+The AI Act classifies LLM systems by risk level. High-risk systems (Article 6) - which include decision-support systems in financial services, education, employment, and essential services - are subject to the strictest requirements.
 
-**Article 12 — Record keeping.** Systems must automatically log relevant events during their operational lifecycle, with sufficient granularity to identify situations that may generate risks.
+**Article 12 - Record keeping.** Systems must automatically log relevant events during their operational lifecycle, with sufficient granularity to identify situations that may generate risks.
 
-**Article 13 — Transparency.** Documentation must enable competent authorities to assess system conformity.
+**Article 13 - Transparency.** Documentation must enable competent authorities to assess system conformity.
 
-**Article 14 — Human oversight.** Operators must be able to interpret system outputs and detect anomalies.
+**Article 14 - Human oversight.** Operators must be able to interpret system outputs and detect anomalies.
 
 ---
 
@@ -148,7 +148,7 @@ from typing import Optional
 
 def redact_pii(text: str) -> str:
     """
-    Basic redaction — extend based on your domain's PII patterns.
+    Basic redaction - extend based on your domain's PII patterns.
     """
     # Email addresses
     text = re.sub(
@@ -193,7 +193,7 @@ def traced_generate(user_question: str, user_id: str) -> str:
         user_id=user_id
     )
 
-    # Generate with original input (not redacted — redaction is only for logs)
+    # Generate with original input (not redacted - redaction is only for logs)
     response = generate(user_question)
 
     trace.update(output={"answer": redact_pii(response)})  # Redact output too
@@ -204,7 +204,7 @@ def traced_generate(user_question: str, user_id: str) -> str:
 **Redaction at the OTel Collector level** (for centralized redaction without code changes):
 
 ```yaml
-# otel-collector-config.yaml — processor section
+# otel-collector-config.yaml - processor section
 processors:
   redaction:
     allow_all_keys: true
@@ -326,3 +326,4 @@ But it constitutes the raw data foundation that these frameworks rely on. Withou
 
 ---
 
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist, LLM system compliance practitioner, and production security specialist. Speaker at FOSDEM 2026 and KubeCon Europe.*

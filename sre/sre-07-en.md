@@ -1,12 +1,12 @@
 # Multi-Step Agents in Production: Visibility and Diagnosis with Langfuse
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
 ## The Specific Challenge of Agents
 
-An LLM agent is not a pipeline. A pipeline has a predefined structure: step 1, step 2, step 3. An agent decides which actions to take, in what order, and how many times. This characteristic — autonomy — is what makes agents powerful, and what makes their observability difficult.
+An LLM agent is not a pipeline. A pipeline has a predefined structure: step 1, step 2, step 3. An agent decides which actions to take, in what order, and how many times. This characteristic - autonomy - is what makes agents powerful, and what makes their observability difficult.
 
 In production, an agent may:
 - Call a tool, observe the result, decide to call a different tool
@@ -14,7 +14,7 @@ In production, an agent may:
 - Abandon one branch and try another
 - Produce a non-deterministic decision tree, different on every execution for the same input
 
-Your classical observability tools see the total execution duration and the final result. Langfuse can show you every decision, every tool call, every iteration — if you instrument correctly.
+Your classical observability tools see the total execution duration and the final result. Langfuse can show you every decision, every tool call, every iteration - if you instrument correctly.
 
 ---
 
@@ -26,30 +26,30 @@ The key difference between a pipeline and an agent in Langfuse is the branching,
 Trace: agent-run
 ├── Metadata: user_id, session_id, agent_version, tools[]
 │
-├── [Step 1 — Thinking]
+├── [Step 1 - Thinking]
 │     Span: agent-step-1/think
 │     Input:  "What is the refund policy for order #4421?"
 │     Output: "I need to search documentation first."
 │
-├── [Step 1 — Tool call]
+├── [Step 1 - Tool call]
 │     Span: agent-step-1/tool: search_documentation
 │     Input:  {"query": "refund policy"}
 │     Output: [3 documents returned]        ← visible
 │     Duration: 340ms
 │
-├── [Step 1 — Reasoning]
+├── [Step 1 - Reasoning]
 │     Generation: gpt-4o-mini               ← tokens + cost
 │     Input:  question + search results
 │     Output: "Docs incomplete. Need pricing for #4421."
 │     412 in / 87 out  →  $0.000062
 │
-├── [Step 2 — Tool call]
+├── [Step 2 - Tool call]
 │     Span: agent-step-2/tool: get_pricing
 │     Input:  {"product_id": "XYZ-42"}
 │     Output: {"price": 299, "currency": "EUR"}
 │     Duration: 180ms
 │
-└── [Step 2 — Final answer]
+└── [Step 2 - Final answer]
       Generation: gpt-4o-mini
       Input:  question + docs + pricing
       Output: "You can return within 30 days. Price: €299."
@@ -285,7 +285,7 @@ def on_llm_end(self, response, **kwargs):
     # Track cumulative token consumption across the agent run
     self.total_tokens = getattr(self, "total_tokens", 0) + total_tokens
 
-    if self.total_tokens > 5000:   # Threshold — calibrate for your use case
+    if self.total_tokens > 5000:   # Threshold - calibrate for your use case
         self.trace.score(
             name="high-token-cost",
             value=1.0,
@@ -347,7 +347,7 @@ groups:
           severity: warning
           team: ml
         annotations:
-          summary: "LLM agents averaging more than 6 steps — investigate convergence"
+          summary: "LLM agents averaging more than 6 steps - investigate convergence"
 
       # Agent completion rate dropping
       - alert: LLMAgentLowCompletionRate
@@ -366,12 +366,12 @@ groups:
 
 ## Why Agentic Observability Is a Control Problem, Not Just a Performance Problem
 
-Agents deployed in sensitive contexts — external API access, data modification, email dispatch, financial calculations — can cause real damage if their behavior drifts. Observability for agents is not only a performance tool: it is a control mechanism.
+Agents deployed in sensitive contexts - external API access, data modification, email dispatch, financial calculations - can cause real damage if their behavior drifts. Observability for agents is not only a performance tool: it is a control mechanism.
 
 The complete Langfuse trace of an agent run constitutes an audit trail of every action the agent took and every intermediate decision. In a regulated context (DORA, AI Act), this traceability is a requirement, not a bonus. An agent that cannot be traced cannot be audited, and an agent that cannot be audited cannot be deployed in a regulated environment.
 
-The combination of per-step span logging, score-based anomaly detection, and VictoriaMetrics alerting gives you operational confidence that your agents are behaving within expected bounds — and rapid diagnosis when they are not.
+The combination of per-step span logging, score-based anomaly detection, and VictoriaMetrics alerting gives you operational confidence that your agents are behaving within expected bounds - and rapid diagnosis when they are not.
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist, agentic AI practitioner, and LLM security engineer. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist, agentic AI practitioner, and LLM security engineer. Speaker at FOSDEM 2026 and KubeCon Europe.*

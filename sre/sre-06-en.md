@@ -1,6 +1,6 @@
 # LLM Observability vs Enterprise APM: Where Dynatrace and Datadog Stop
 
-*By Samuel Desseaux — Aureonis*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -16,13 +16,13 @@ The short answer is yes. This module explains why, without dogmatism, and propos
 
 Start with an honest assessment.
 
-**Auto-instrumentation.** Dynatrace and Datadog automatically capture outbound calls to OpenAI, Anthropic, and Azure OpenAI APIs via their agent. You get latency, error rates, and call counts — without touching your code.
+**Auto-instrumentation.** Dynatrace and Datadog automatically capture outbound calls to OpenAI, Anthropic, and Azure OpenAI APIs via their agent. You get latency, error rates, and call counts - without touching your code.
 
 **Infrastructure correlation.** The core strength of mature APMs is correlation: you see that a slow LLM call is preceded by CPU saturation on the pod, or that the timeout originates from a network issue. This infra-to-application correlation is difficult to reproduce with a standalone tool.
 
 **Unified alerting.** Your LLM alerts can share the same channels, escalation policies, and runbooks as your application alerts. For an SRE team managing dozens of services, reducing the number of tools under monitoring has real operational value.
 
-**Enterprise security and compliance.** SOC2, GDPR, SSO, advanced RBAC — enterprise APMs have solved these problems for years. Self-hosted Langfuse solves them too, but with more configuration effort.
+**Enterprise security and compliance.** SOC2, GDPR, SSO, advanced RBAC - enterprise APMs have solved these problems for years. Self-hosted Langfuse solves them too, but with more configuration effort.
 
 ---
 
@@ -80,7 +80,7 @@ Open-source            ──         ──         ████████
 
 ---
 
-## Datadog LLM Observability — A Closer Look
+## Datadog LLM Observability - A Closer Look
 
 Datadog has invested more than other APMs in LLM capabilities. Their LLM Observability product (GA since late 2024) provides:
 
@@ -91,7 +91,7 @@ Datadog has invested more than other APMs in LLM capabilities. Their LLM Observa
 
 It is the most serious competitor to Langfuse in environments that already run Datadog. The remaining limitations:
 
-- No self-hosting: your LLM data transits through Datadog Cloud — a concern for regulated industries
+- No self-hosting: your LLM data transits through Datadog Cloud - a concern for regulated industries
 - Significant additional cost (LLM Observability is a separately priced add-on)
 - Less rich evaluation ecosystem compared to Langfuse
 - Strong platform lock-in
@@ -100,7 +100,7 @@ It is the most serious competitor to Langfuse in environments that already run D
 
 ## Three Recommended Hybrid Architectures
 
-### Configuration A — Existing APM + Langfuse as complement
+### Configuration A - Existing APM + Langfuse as complement
 
 The most common scenario. You keep your APM investment and add Langfuse for the content layer.
 
@@ -139,7 +139,7 @@ langfuse_trace = langfuse.trace(
 )
 ```
 
-### Configuration B — Full open-source stack (no enterprise APM)
+### Configuration B - Full open-source stack (no enterprise APM)
 
 For teams without an enterprise APM contract, or those building a 100% open-source stack:
 
@@ -153,7 +153,7 @@ OpenTelemetry Collector
 
 Covered in detail in modules SRE-01 and SRE-02.
 
-### Configuration C — Datadog + Langfuse for datasets
+### Configuration C - Datadog + Langfuse for datasets
 
 Even if you use Datadog LLM Observability for real-time monitoring, retain Langfuse for evaluation dataset management and the continuous improvement loop. Datadog does not provide an annotation workflow anywhere near as complete.
 
@@ -175,4 +175,4 @@ Arguments that work:
 
 ---
 
-*Samuel Desseaux is the founder of Aureonis, an observability stack specialist (OpenTelemetry, VictoriaMetrics, Dynatrace, Elastic) and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*
+*Samuel Desseaux is the founder of Erythix, an observability stack specialist (OpenTelemetry, VictoriaMetrics, Dynatrace, Elastic) and LLM security practitioner. Speaker at FOSDEM 2026 and KubeCon Europe.*

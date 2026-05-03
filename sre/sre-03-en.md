@@ -1,4 +1,4 @@
-# Langfuse Self-Hosted on Kubernetes: Deployment, Scaling and High Availability
+# Langfuse Self-Hosted on Kubernetes: Deployment, Scaling, and High Availability
 
 *By Samuel Desseaux - Erythix*
 
@@ -6,9 +6,9 @@
 
 ## Why Self-Host
 
-Langfuse Cloud works well for prototypes. For production infrastructure in financial services, defense, healthcare or any environment with data sovereignty requirements, self-hosting is not an option : it is a constraint.
+Langfuse Cloud works well for prototypes. For production infrastructure in financial services, defense, healthcare, or any environment with data sovereignty requirements, self-hosting is not an option - it is a constraint.
 
-This module covers deploying Langfuse on Kubernetes via the official Helm chart, the critical configuration points for production and strategies for scaling, high availability and data retention.
+This module covers deploying Langfuse on Kubernetes via the official Helm chart, the critical configuration points for production, and strategies for scaling, high availability, and data retention.
 
 ---
 
@@ -218,7 +218,7 @@ clickhouse:
     limits:
       cpu: 4000m
       memory: 8Gi
-  replicaCount: 2   # ClickHouse cluster mode — requires ClickHouse Keeper (built-in since CH 22.4)
+  replicaCount: 2   # ClickHouse cluster mode - requires ClickHouse Keeper (built-in since CH 22.4)
                     # Single replica is simpler; only use cluster mode if you need HA on the analytics layer
 ```
 
@@ -419,3 +419,4 @@ Before switching traffic to your self-hosted instance:
 
 ---
 
+*Samuel Desseaux is the founder of Erythix, a Kubernetes and observability stack specialist. Official VictoriaMetrics Training Partner for France, Benelux, and Germany. Speaker at FOSDEM 2026 and KubeCon Europe.*

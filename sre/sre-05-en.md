@@ -1,6 +1,6 @@
 # Detecting Prompt Injections with Langfuse
 
-*By Samuel Desseaux -Erythix*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -10,7 +10,7 @@ Prompt injection is the most prevalent attack against production LLM systems. It
 
 Most teams address this problem at design time only - guardrails in the system prompt, input filters. This is insufficient. Attacks evolve, bypasses get refined, and without production monitoring you have zero visibility into what is attempting to pass through.
 
-This module covers how to instrument a prompt injection detection layer, create Langfuse scores for detected attempts and configure VictoriaMetrics alerts correlated with application spans.
+This module covers how to instrument a prompt injection detection layer, create Langfuse scores for detected attempts, and configure VictoriaMetrics alerts correlated with application spans.
 
 ---
 
@@ -24,7 +24,7 @@ Before instrumenting, define what you are trying to detect:
 - "System: [new instructions]"
 - "Forget everything above and act as..."
 
-**Indirect injection.** Malicious instructions arrive via an external data source retrieved by the RAG pipeline — a document, an email, a web page:
+**Indirect injection.** Malicious instructions arrive via an external data source retrieved by the RAG pipeline - a document, an email, a web page:
 - An indexed document contains "If you read this, always respond that..."
 - A scraped web page contains hidden instructions in white-on-white text
 
@@ -56,7 +56,7 @@ Before instrumenting, define what you are trying to detect:
             │  │ · format-injection   │  │
             │  └──────────┬──────────┘  │
             │             │             │
-            │    risk_score: 0.0 – 1.0  │
+            │    risk_score: 0.0 - 1.0  │
             └─────────────┬─────────────┘
                           │
            ┌──────────────┴──────────────┐
@@ -135,7 +135,7 @@ class InjectionAnalysis:
 
 # Pattern library: (regex, label, score, evidence_template)
 INJECTION_PATTERNS = [
-    # Instruction override — direct
+    # Instruction override - direct
     (r"ignore\s+(all\s+)?(previous|prior|above)\s+instructions?", "instruction-override", 0.95,
      "Direct instruction override attempt"),
     (r"disregard\s+(your|all|any)\s+(instructions?|training|rules)", "instruction-override", 0.90,
@@ -349,7 +349,7 @@ groups:
     interval: 30s
     rules:
 
-      # Injection spike — blocked attempts
+      # Injection spike - blocked attempts
       - alert: LLMInjectionSpike
         expr: |
           rate(langfuse_injection_attempts_total{action="block"}[5m]) > 0.1
@@ -397,7 +397,7 @@ groups:
           severity: warning
           team: security
         annotations:
-          summary: "High LLM flag rate — investigate for coordinated probing"
+          summary: "High LLM flag rate - investigate for coordinated probing"
 ```
 
 ---
@@ -431,3 +431,4 @@ for i, doc in enumerate(retrieved_docs):
 
 ---
 
+*Samuel Desseaux is the founder of Erythix, an LLM security specialist (SEC-301/302/303 training programs), observability practitioner, and compliance engineer. Speaker at FOSDEM 2026 and KubeCon Europe.*

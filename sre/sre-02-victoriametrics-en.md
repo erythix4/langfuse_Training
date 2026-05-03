@@ -1,6 +1,6 @@
 # Langfuse + VictoriaMetrics: LLM Metrics in Your Native Prometheus Stack
 
-*By Samuel Desseaux -Erythix*
+*By Samuel Desseaux - Erythix*
 
 ---
 
@@ -10,7 +10,7 @@ Most articles on LLM observability treat Langfuse as a standalone tool: you brow
 
 In production, your SLOs live in Prometheus. Your alerts fire through Alertmanager. Your operational dashboards run in Grafana, fed by VictoriaMetrics. Your on-call engineer is not going to open a third tool at 3am to understand why the LLM pipeline is degraded.
 
-The goal of this module is to show you how to pull Langfuse's LLM metrics into VictoriaMetrics, build Prometheus-compatible alerts, and extend your existing Grafana dashboards — without proprietary middleware, without vendor lock-in, and without touching your application code.
+The goal of this module is to show you how to pull Langfuse's LLM metrics into VictoriaMetrics, build Prometheus-compatible alerts, and extend your existing Grafana dashboards - without proprietary middleware, without vendor lock-in, and without touching your application code.
 
 ---
 
@@ -34,7 +34,7 @@ The solution is a **custom exporter**: a lightweight process that polls the Lang
 │  REST API: /api/public/metrics/daily                          │
 │            /api/public/scores                                 │
 └──────────────────────┬────────────────────────────────────────┘
-                       │  HTTP polling — every 60s
+                       │  HTTP polling - every 60s
                        ▼
 ┌───────────────────────────────────────────────────────────────┐
 │  langfuse-exporter  (Python, Deployment in monitoring ns)     │
@@ -526,7 +526,7 @@ Add a `$model` variable linked to the `model` label of `langfuse_generation_late
 
 Be explicit about the limits.
 
-**Aggregated metrics do not replace individual traces.** If you need to debug a specific generation — see the exact prompt, the tokens, the raw response — you stay in the Langfuse UI or its traces API. VictoriaMetrics does not store that level of detail, and it should not: that is not its purpose.
+**Aggregated metrics do not replace individual traces.** If you need to debug a specific generation - see the exact prompt, the tokens, the raw response - you stay in the Langfuse UI or its traces API. VictoriaMetrics does not store that level of detail, and it should not: that is not its purpose.
 
 **Evaluation scores require an active scoring system.** The exporter exposes scores that already exist in Langfuse. It does not generate them. LLM-as-judge, human annotation, or automated scoring must be configured separately (see module DevOps-04).
 
@@ -548,4 +548,4 @@ The two stacks are complementary. Routing LLM metrics into VictoriaMetrics does 
 
 ---
 
-
+*Samuel Desseaux is the founder of Erythix and an official VictoriaMetrics Training Partner (France, Benelux, Germany). Speaker at FOSDEM 2026 and KubeCon Europe.*
